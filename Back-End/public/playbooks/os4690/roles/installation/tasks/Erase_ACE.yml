@@ -1,0 +1,40 @@
+##########################################
+## Removes ADXCATGD.DAT located in Ipgm
+## Required variables:
+## - c_adx_ipgm
+##########################################
+
+---
+- name: Check backup Exist
+  stat:
+    path: "/mnt/c/backup/"
+  register: lz
+
+- name: Cleanning the backup
+  shell: "rm -r /mnt/c/backup/"
+  when: lz.stat.exists
+
+- name: Check backup  Exist
+  stat:
+    path: "/mnt/c/backup/"
+  register: lz2
+
+- name: Create Directory backup
+  file:
+    path: "/mnt/c/backup/"
+    state: directory
+  when: not lz2.stat.exists
+
+- name: Cheks if there is an ACE old Version dat
+  stat:
+    path: "{{c_adx_ipgm}}ADXCATGD.DAT"
+  register: lp
+
+- name: moving to bakup
+  shell: "cp {{c_adx_ipgm}}ADXCATGD.DAT {{c_drive}}backup/"
+  when: lp.stat.exists
+
+- name: Deleting the ACE old Version dat
+  shell: "rm -r {{c_adx_ipgm}}ADXCATGD.DAT"
+  when: lp.stat.exists
+

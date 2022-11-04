@@ -1,0 +1,118 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  title Unattended Installation
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ultra')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx' crossorigin='anonymous')
+  title Index css
+  link(href='/css/index.css' rel='stylesheet')
+nav.navbar.navbar-expand-lg.navbar-dark(style='background-color: black;')
+  .container-fluid
+    a.navbar-brand(href='https://www.toshiba.com/')
+      img.card-img-top(src='https://upload.wikimedia.org/wikipedia/commons/d/df/TOSHIBA_Logo.png' alt='Toshibalogo' width='50' height='50')
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarScroll' aria-controls='navbarScroll' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarScroll.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll(style='--bs-scroll-height: 100px;')
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/') Home
+        li.nav-item
+          a.nav-link.active(aria-current='page' href='/Controladores') Controladores
+.row
+  .col-md-5.p-lg-5
+    .mx-auto.mb-4.text-center
+      h1 Parametros de instalaci&oacute;n
+      .alert.alert-warning.border(role='alert')
+        | Estas modificando el controlador #
+    form.row.g-3
+      .col-md-6
+        label(for='selectversion') Elige la version de ACE
+        select#selectversion.form-select.version
+          option(value='') Seleccione
+          option(value='Jedi') Jedi
+          option(value='Leia') Leia
+          option(value='Neo') Neo
+          option(value='Morty') Morty
+      .col-md-6
+        label(for='Selectlevel') Los realeses disonibles son:
+        select#Selectlevel.form-select.nivel
+          option(value='') Seleccione
+          option(value='l167') l167
+      .col-6
+        h6 Procedure
+        .form-check
+          input#mig.form-check-input(type='radio' name='procedure' checked='')
+          label.form-check-label(for='flexRadioDefault2')
+            | Migration
+        .form-check
+          input#insta.form-check-input(type='radio' name='procedure')
+          label.form-check-label(for='flexRadioDefault1')
+            | Installation
+      .col-6
+        h6 ASM
+        .form-check
+          input#test.form-check-input(type='radio' name='asm' checked='')
+          label.form-check-label(for='flexRadioDefault2')
+            | Test
+        .form-check
+          input#accept.form-check-input(type='radio' name='asm')
+          label.form-check-label(for='flexRadioDefault1')
+            | Accept
+      .col-12
+        .form-check
+          input#fechacheck.form-check-input(type='checkbox')
+          label.ms-2.form-check-label(for='gridCheck')
+            | &iquest;Deseas Calendarizar este controlador?
+      .col-6
+        label(for='fecha') Fecha:
+        input#fecha.form-control(type='datetime-local' name='fecha')
+      .col-12
+        h6 Paquetes disponibles
+        .form-check
+          input#ACE3D.form-check-input(type='checkbox' value='ACE3D' checked='')
+          label.form-check-label(for='flexCheckDefault')  ACE3D 
+        .form-check
+          input#EPS.form-check-input(type='checkbox' value='EPS' checked='')
+          label.form-check-label(for='flexCheckDefault')  EPS
+        .form-check
+          input#TCX.form-check-input(type='checkbox' value='TCxpay')
+          label.form-check-label(for='flexCheckDefault')  TCxpay 
+        .form-check
+          input#Common.form-check-input(type='checkbox' value='TCxPayCommon')
+          label.form-check-label(for='flexCheckChecked') TCxPayCommon
+        .form-check
+          input#PinPad.form-check-input(type='checkbox' value='TCxPayPinPad')
+          label.form-check-label(for='flexCheckChecked') TCxPayPinPad
+      .col-12.condicional
+        button.btn.btn-primary.parametros(type='submit') Add Controller
+  .col-md-7
+    main
+      .position-relative.overflow-hidden.p-3.tabla
+        .p-lg-4
+          // <div class="col-md-5 p-lg-5 mx-auto my-5" >
+          h1.display-4.fw-normal Controladores
+          p.lead.fw-normal Lista de controladores agregados
+          .text-center.t1
+            table.table
+              thead
+                tr
+                  th(scope='col') #
+                  th(scope='col') IP
+                  th(scope='col') User
+                  th(scope='col') Realese
+                  th(scope='col') Level
+                  th(scope='col') Packages
+                  th(scope='col') Procedure
+                  th(scope='col') ASM
+                  th(scope='col') Date
+                  th(scope='col') Edit
+                  th(scope='col') Delete
+              tbody
+            button.btn.btn-primary.m-1(type='submit')
+              a.nav-link.active.agregar(aria-current='page' href='/') Agregar controlador
+            button#bntjenkins.btn.btn-danger.m-2(type='submit')
+              label.nav-link.active.comenzar(target='_blank' aria-current='page') Comenzar instalaci&oacute;n
+script(src='https://kit.fontawesome.com/830dfc8e08.js' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa' crossorigin='anonymous')
+script(src='js/Controladores.js')

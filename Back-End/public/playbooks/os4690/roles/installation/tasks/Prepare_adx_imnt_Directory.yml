@@ -1,0 +1,42 @@
+##########################################
+## Create Directory If It Does Not Exist.
+## Required variables:
+## - C:/ 
+##########################################
+
+---
+- name: Check ADX_IMNT/UINSTALL Exist
+  stat:
+    path: "{{c_adx_imnt}}UINSTALL/"
+  register: imnt_unin
+
+- name: Cleanning ADX_IMNT/UINSTALL
+  shell: "rm -r {{c_adx_imnt}}UINSTALL/"
+  when: imnt_unin.stat.exists
+
+- name: Check ACE3D Exist
+  stat:
+    path: "{{c_drive}}ACE3D/"
+  register: ace3d
+
+- name: Cleanning ACE3D if exist
+  shell: "rm -r {{c_drive}}ACE3D/"
+  when: ace3d.stat.exists
+
+- name: Check adx_imnt:asm.py scripts Exist
+  stat:
+    path: "{{c_adx_imnt}}asm.py"
+  register: imnt_asm
+
+- name: Deleting adx_imnt:asm.py
+  shell: "rm -f {{c_adx_imnt}}asm.py"
+  when: imnt_asm.stat.exists
+
+- name: Check adx_imnt:auto.bat scripts Exist
+  stat:
+    path: "{{c_adx_imnt}}auto.bat"
+  register: imnt_auto
+
+- name: Deleting adx_imnt:auto.bat
+  shell: "rm -f {{c_adx_imnt}}auto.bat"
+  when: imnt_auto.stat.exists

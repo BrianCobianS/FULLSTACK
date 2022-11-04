@@ -1,0 +1,17 @@
+
+<!-- Este archivo copia el archivo de la carpeta backup previamente creada en erase_ace.yml y lo pega en ibul -->
+<!-- - name: Preparing the back up.
+  include_role:
+    name: installation
+    tasks_from: Copy_for_Back.yml
+  when: ASM == "Test" && opc == "1" -->
+
+- name: Cheks if there is a back up
+  stat:
+    path: "{{c_drive}}backup/ADXCATGD.DAT"
+  register: lp
+
+- name: moving to ibul
+  shell: "cp {{c_drive}}backup/ADXCATGD.DAT {{c_adx_ibul}}"
+  when: lp.stat.exists
+

@@ -1,0 +1,78 @@
+
+- name: Preparing the c_adx_ipgm directory.
+  include_role:
+    name: installation
+    tasks_from: Erase_ACE.yml
+  when: opc  == "1"
+
+- name: Create Landing Zone
+  include_role:
+    name: installation
+    tasks_from: Create_Landing_Zone.yml
+
+- name: Copy Files In Landing Zone
+  copy:
+    src: "{{item}}"
+    dest: "{{landing_zone}}"
+  with_fileglob: "{{config_dir}}/*.*"
+
+- name: Preparing the adx_imnt directory.
+  include_role:
+    name: installation
+    tasks_from: Prepare_adx_imnt_Directory.yml
+
+- name: Create Directory UINSTALL/
+  file:
+    path: "{{c_adx_imnt}}UINSTALL/"
+    state: directory
+
+
+- name: Create Directory ACE3D If Does Not Exist
+  file:
+    path: "{{c_drive}}ACE3D/"
+    state: directory
+
+- name: Download Toshiba Nexus Package ACE From Nexus
+  get_url:
+    url: "{{nexus_url2}}/repository/tgcs-maven-snapshot/com/toshibacommerce/ace/ACE3D001/{{level_name}}-SNAPSHOT/ACE3D001-{{level_complement}}.zip"
+    dest: "{{landing_zone}}"
+
+
+- name: Copy Files In UINSTALL y ACE3D
+  shell: "cp {{landing_zone}}ACE3D001-{{level_complement}}.zip {{c_drive}}ACE3D/ACE3D001.zip; cp {{landing_zone}}asm.py {{c_adx_imnt}}/; cp {{landing_zone}}AUTO.BAT {{c_adx_imnt}}; cp {{landing_zone}}updFile.py {{c_adx_imnt}}UINSTALL/; cp {{landing_zone}}unZIP.PY {{c_adx_imnt}}UINSTALL/; cp {{landing_zone}}START.BAT {{c_adx_imnt}}UINSTALL/;"
+
+- name: Unziping the package of installation
+  shell: "python3 {{c_adx_imnt}}UINSTALL/unZIP.PY"
+
+- name: Updating the installation files 
+  shell: "python3 {{c_adx_imnt}}UINSTALL/updFile.py"
+
+- name: Starting the installation
+  shell: "{{c_adx_imnt}}UINSTALL/START.BAT"
+
+- name: Starting asm and reboot controller...
+  shell: "python2 {{c_adx_imnt}}asm.py {{ASM}}"
+  ignore_errors: true
+
+- name: Wait For Reboot If There Was A Change
+  wait_for_connection:
+    sleep: 5
+    delay: 10
+    timeout: 300
+
+- name: Cleaning directories.
+  include_role:
+    name: installation
+    tasks_from: Prepare_adx_imnt_Directory.yml
+
+- name: Check de log file of ASM
+  command: cat adxcshsf.dat
+  args:
+      chdir: "{{c_adx_sdt1}}"
+
+- name: Report Module Level.
+  include_role:
+    name: installation
+    tasks_from: Report_Module_Backup.yml
+
+
