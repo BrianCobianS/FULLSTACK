@@ -1,5 +1,5 @@
 import  express  from "express";
-import {Indexuna, Parametroscontrollador} from '../Controllers/inicioUna.js'
+import {Indexuna, Parametroscontrollador} from '../Controllers/InicioUna.js'
 
 
 const router = express.Router()

@@ -1,0 +1,398 @@
+ansible-playbook [core 2.13.5]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/ebossteam/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/ebossteam/.local/lib/python3.10/site-packages/ansible
+  ansible collection location = /home/ebossteam/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/ebossteam/.local/bin/ansible-playbook
+  python version = 3.10.6 (main, Nov  2 2022, 18:53:38) [GCC 11.3.0]
+  jinja version = 3.1.2
+  libyaml = True
+Using /etc/ansible/ansible.cfg as config file
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: Install_Controller.yml ***********************************************
+1 plays in /home/ebossteam/temp/10.89.105.98/playbooks/os4690/Install_Controller.yml
+
+PLAY [mfs] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/Install_Controller.yml:3
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: Platform linux on host 10.89.105.98 is using the discovered Python
+interpreter at /usr/bin/python3.5, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.13/reference_appendices/interpreter_discovery.html for more information.
+ok: [10.89.105.98]
+META: ran handlers
+
+TASK [include_role : installation] *********************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/Install_Controller.yml:5
+
+TASK [Preparing the c_adx_ipgm directory.] *************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:2
+
+TASK [installation : Check backup Exist] ***************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:8
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668446780.4057298, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 0, "charset": "binary", "ctime": 1668446780.4057298, "dev": 48, "device_type": 0, "executable": true, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 116, "isblk": false, "ischr": false, "isdir": true, "isfifo": false, "isgid": false, "islnk": false, "isreg": false, "issock": false, "isuid": false, "mimetype": "inode/directory", "mode": "0770", "mtime": 1668446780.4057298, "nlink": 2, "path": "/mnt/c/backup/", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": false, "rusr": true, "size": 0, "uid": 500, "version": null, "wgrp": true, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": false, "xusr": true}}
+
+TASK [installation : Cleanning the backup] *************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:13
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -r /mnt/c/backup/", "delta": "0:00:00.026288", "end": "2022-11-14 17:19:10.280543", "msg": "", "rc": 0, "start": "2022-11-14 17:19:10.254255", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Check backup  Exist] **************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:17
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"exists": false}}
+
+TASK [installation : Create Directory backup] **********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:22
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "gid": 500, "group": "vx4690", "mode": "0770", "owner": "vxuser", "path": "/mnt/c/backup/", "size": 0, "state": "directory", "uid": 500}
+
+TASK [installation : Cheks if there is an ACE old Version dat] *****************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:28
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668446934.4057298, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 1, "charset": "binary", "checksum": "775e116ef617b5e0f56d845dd802a72ec10cbf81", "ctime": 1668446934.4057298, "dev": 48, "device_type": 0, "executable": false, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 119, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "image/x-portable-pixmap", "mode": "0660", "mtime": 1668446934.4057298, "nlink": 2, "path": "/mnt/c/adx_ipgm/ADXCATGD.DAT", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": false, "rusr": true, "size": 12611, "uid": 500, "version": null, "wgrp": true, "woth": false, "writeable": true, "wusr": true, "xgrp": false, "xoth": false, "xusr": false}}
+
+TASK [installation : moving to bakup] ******************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:33
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "cp /mnt/c/adx_ipgm/ADXCATGD.DAT /mnt/c/backup/", "delta": "0:00:00.047353", "end": "2022-11-14 17:19:12.621773", "msg": "", "rc": 0, "start": "2022-11-14 17:19:12.574420", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Deleting the ACE old Version dat] *************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Erase_ACE.yml:37
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -r /mnt/c/adx_ipgm/ADXCATGD.DAT", "delta": "0:00:00.016770", "end": "2022-11-14 17:19:13.164059", "msg": "", "rc": 0, "start": "2022-11-14 17:19:13.147289", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+META: role_complete for 10.89.105.98
+
+TASK [Create Landing Zone] *****************************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:8
+
+TASK [installation : Check Landing Zone Exist] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Create_Landing_Zone.yml:8
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668446784.3099477, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 8, "charset": "binary", "ctime": 1668446809.7309456, "dev": 2053, "device_type": 0, "executable": true, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 43254487, "isblk": false, "ischr": false, "isdir": true, "isfifo": false, "isgid": false, "islnk": false, "isreg": false, "issock": false, "isuid": false, "mimetype": "inode/directory", "mode": "0755", "mtime": 1668446809.7309456, "nlink": 2, "path": "/home/vxuser/Landing/", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": true, "rusr": true, "size": 4096, "uid": 500, "version": null, "wgrp": false, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": true, "xusr": true}}
+
+TASK [installation : Cleanning the landing zone] *******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Create_Landing_Zone.yml:13
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -r /home/vxuser/Landing/", "delta": "0:00:00.010072", "end": "2022-11-14 17:19:14.273289", "msg": "", "rc": 0, "start": "2022-11-14 17:19:14.263217", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Check Landing Zone Exist] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Create_Landing_Zone.yml:17
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"exists": false}}
+
+TASK [installation : Create Directory If It Does Not Exist] ********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Create_Landing_Zone.yml:22
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "gid": 500, "group": "vx4690", "mode": "0755", "owner": "vxuser", "path": "/home/vxuser/Landing/", "size": 4096, "state": "directory", "uid": 500}
+META: role_complete for 10.89.105.98
+
+TASK [installation : Copy Files In Landing Zone] *******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:13
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/generate_rml_rcp_cmd.py) => {"ansible_loop_var": "item", "changed": true, "checksum": "737b089c3bc363183655fa76af7dac69d3c73831", "dest": "/home/vxuser/Landing/generate_rml_rcp_cmd.py", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/generate_rml_rcp_cmd.py", "md5sum": "023fae9f392ae6f1d0a78982fe25c9f4", "mode": "0644", "owner": "vxuser", "size": 1811, "src": "~master/.ansible/tmp/ansible-tmp-1668463979.9478824-237077-158256474459414/source", "state": "file", "uid": 500}
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/print_report_module_levels.py) => {"ansible_loop_var": "item", "changed": true, "checksum": "9dc15e51664b559bea460c780ef4f961c4645548", "dest": "/home/vxuser/Landing/print_report_module_levels.py", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/print_report_module_levels.py", "md5sum": "33f1be4636aa9dead621f5625a51cdc1", "mode": "0644", "owner": "vxuser", "size": 1863, "src": "~master/.ansible/tmp/ansible-tmp-1668463981.1558285-237077-59848258144238/source", "state": "file", "uid": 500}
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/updFile.py) => {"ansible_loop_var": "item", "changed": true, "checksum": "f250eabce7e65081388ee1de633b83021c69b8a2", "dest": "/home/vxuser/Landing/updFile.py", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/updFile.py", "md5sum": "bb31fd06289cda814db9202c2fa341e8", "mode": "0644", "owner": "vxuser", "size": 2498, "src": "~master/.ansible/tmp/ansible-tmp-1668463982.1626801-237077-6858906618788/source", "state": "file", "uid": 500}
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/START.BAT) => {"ansible_loop_var": "item", "changed": true, "checksum": "d7506235e5474e4dd9a8b065ebb0f841d1f4c4d0", "dest": "/home/vxuser/Landing/START.BAT", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/START.BAT", "md5sum": "207fe57e435921e008603f2ba9e1f575", "mode": "0644", "owner": "vxuser", "size": 30, "src": "~master/.ansible/tmp/ansible-tmp-1668463983.1733456-237077-120867295389023/source", "state": "file", "uid": 500}
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/AUTO.BAT) => {"ansible_loop_var": "item", "changed": true, "checksum": "026d133d59ecbf4fbfd5fad79c6f261eb005a8ea", "dest": "/home/vxuser/Landing/AUTO.BAT", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/AUTO.BAT", "md5sum": "8ac93cbefeb092ed7334a69cebe28181", "mode": "0644", "owner": "vxuser", "size": 74, "src": "~master/.ansible/tmp/ansible-tmp-1668463984.1866407-237077-65804466315083/source", "state": "file", "uid": 500}
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/asm.py) => {"ansible_loop_var": "item", "changed": true, "checksum": "87fc6e1c7befe88f4176f7ce3fb3dfbfd1a08d88", "dest": "/home/vxuser/Landing/asm.py", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/asm.py", "md5sum": "6ae8fe3e0d80a5a59aa4ad3d597b5a24", "mode": "0644", "owner": "vxuser", "size": 715, "src": "~master/.ansible/tmp/ansible-tmp-1668463985.2140255-237077-61766534027081/source", "state": "file", "uid": 500}
+changed: [10.89.105.98] => (item=/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/unZIP.PY) => {"ansible_loop_var": "item", "changed": true, "checksum": "8f14ecb0bb98c6fcf3dbdb9b154efc85b2818037", "dest": "/home/vxuser/Landing/unZIP.PY", "gid": 500, "group": "vx4690", "item": "/home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/files/unZIP.PY", "md5sum": "2043490894dba5270a42735903fb0065", "mode": "0644", "owner": "vxuser", "size": 178, "src": "~master/.ansible/tmp/ansible-tmp-1668463986.2215586-237077-162423787009742/source", "state": "file", "uid": 500}
+
+TASK [Preparing the adx_imnt directory.] ***************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:19
+
+TASK [installation : Check ADX_IMNT/UINSTALL Exist] ****************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:8
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"exists": false}}
+
+TASK [installation : Cleanning ADX_IMNT/UINSTALL] ******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:13
+skipping: [10.89.105.98] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [installation : Check ACE3D Exist] ****************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:17
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"exists": false}}
+
+TASK [installation : Cleanning ACE3D if exist] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:22
+skipping: [10.89.105.98] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [installation : Check adx_imnt:asm.py scripts Exist] **********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:26
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"exists": false}}
+
+TASK [installation : Deleting adx_imnt:asm.py] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:31
+skipping: [10.89.105.98] => {"changed": false, "skip_reason": "Conditional result was False"}
+
+TASK [installation : Check adx_imnt:auto.bat scripts Exist] ********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:35
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"exists": false}}
+
+TASK [installation : Deleting adx_imnt:auto.bat] *******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:40
+skipping: [10.89.105.98] => {"changed": false, "skip_reason": "Conditional result was False"}
+META: role_complete for 10.89.105.98
+
+TASK [installation : Create Directory UINSTALL/] *******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:24
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "gid": 500, "group": "vx4690", "mode": "0770", "owner": "vxuser", "path": "/mnt/c/adx_imnt/UINSTALL/", "size": 0, "state": "directory", "uid": 500}
+
+TASK [installation : Create Directory ACE3D If Does Not Exist] *****************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:30
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "gid": 500, "group": "vx4690", "mode": "0770", "owner": "vxuser", "path": "/mnt/c/ACE3D/", "size": 0, "state": "directory", "uid": 500}
+
+TASK [installation : Download Toshiba Nexus Package ACE From Nexus] ************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:35
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "checksum_dest": null, "checksum_src": "6b9a94c82e9777185b430fcd79f712d99aa1ac7a", "dest": "/home/vxuser/Landing/ACE3D001-V8R3.m113.7-20221107.185932-1.zip", "elapsed": 11, "gid": 500, "group": "vx4690", "md5sum": "077b222feee6c377bc876cd811713dd9", "mode": "0644", "msg": "OK (106456572 bytes)", "owner": "vxuser", "size": 106456572, "src": "/home/vxuser/~master/.ansible/tmp/ansible-tmp-1668463990.4770045-237497-211729609885801/tmpb_isnhkg", "state": "file", "status_code": 200, "uid": 500, "url": "http://10.89.110.62:28081/repository/tgcs-maven-snapshot/com/toshibacommerce/ace/ACE3D001/V8R3.m113.7-SNAPSHOT/ACE3D001-V8R3.m113.7-20221107.185932-1.zip"}
+
+TASK [installation : Copy Files In UINSTALL y ACE3D] ***************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:41
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "cp /home/vxuser/Landing/ACE3D001-V8R3.m113.7-20221107.185932-1.zip /mnt/c/ACE3D/ACE3D001.zip; cp /home/vxuser/Landing/asm.py /mnt/c/adx_imnt//; cp /home/vxuser/Landing/AUTO.BAT /mnt/c/adx_imnt/; cp /home/vxuser/Landing/updFile.py /mnt/c/adx_imnt/UINSTALL/; cp /home/vxuser/Landing/unZIP.PY /mnt/c/adx_imnt/UINSTALL/; cp /home/vxuser/Landing/START.BAT /mnt/c/adx_imnt/UINSTALL/;", "delta": "0:00:07.977394", "end": "2022-11-14 17:19:47.209588", "msg": "", "rc": 0, "start": "2022-11-14 17:19:39.232194", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Unziping the package of installation] *********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:44
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "python3 /mnt/c/adx_imnt/UINSTALL/unZIP.PY", "delta": "0:00:10.909224", "end": "2022-11-14 17:19:58.625461", "msg": "", "rc": 0, "start": "2022-11-14 17:19:47.716237", "stderr": "", "stderr_lines": [], "stdout": "File is unzipped in /mnt/c/ACE3D folder", "stdout_lines": ["File is unzipped in /mnt/c/ACE3D folder"]}
+
+TASK [installation : Updating the installation files] **************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:47
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "python3 /mnt/c/adx_imnt/UINSTALL/updFile.py", "delta": "0:00:00.626979", "end": "2022-11-14 17:19:59.777677", "msg": "", "rc": 0, "start": "2022-11-14 17:19:59.150698", "stderr": "", "stderr_lines": [], "stdout": "match\nposicion del cambio =  [94]\n94\nmatch\nposicion del cambio =  [269]\n269\nmatch\nposicion del cambio =  [301]\n301\nmatch\nposicion del cambio =  [126]\n126\nmatch\nposicion del cambio =  [150]\n150\n4\n3\n0\nYA NO HAY MAS PAUSES 0\n3\n0\nYA NO HAY MAS PAUSES 0\n1\n0\nYA NO HAY MAS PAUSES 0\n1\n0\nYA NO HAY MAS PAUSES 0\n2\n2\n1\n0\nYA NO HAY MAS PAUSES 0\n2\n0\nYA NO HAY MAS PAUSES 0\n1\n0\nYA NO HAY MAS PAUSES 0", "stdout_lines": ["match", "posicion del cambio =  [94]", "94", "match", "posicion del cambio =  [269]", "269", "match", "posicion del cambio =  [301]", "301", "match", "posicion del cambio =  [126]", "126", "match", "posicion del cambio =  [150]", "150", "4", "3", "0", "YA NO HAY MAS PAUSES 0", "3", "0", "YA NO HAY MAS PAUSES 0", "1", "0", "YA NO HAY MAS PAUSES 0", "1", "0", "YA NO HAY MAS PAUSES 0", "2", "2", "1", "0", "YA NO HAY MAS PAUSES 0", "2", "0", "YA NO HAY MAS PAUSES 0", "1", "0", "YA NO HAY MAS PAUSES 0"]}
+
+TASK [installation : Starting the installation] ********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:50
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "/mnt/c/adx_imnt/UINSTALL/START.BAT", "delta": "0:00:25.454021", "end": "2022-11-14 17:20:25.741925", "msg": "", "rc": 0, "start": "2022-11-14 17:20:00.287904", "stderr": "", "stderr_lines": [], "stdout": "\r\nC>DEFINE p:=c:/ace3d/\r\n\r\nC>p:install\r\n\r\nC>ECHO off\r\n\f=================================================================\r\n=              Preparing for installation process               =\r\n=================================================================\r\n=================================================================\r\n=         Copying installation bat files from CD ROM            =\r\n=================================================================\r\n\f=================================================================\r\n=         Copying installation bat files from CD ROM            =\r\n=================================================================\r\n\f=================================================================\r\n=                  INSTALLING SurePOS ACE                       =\r\n=================================================================\r\n    Current product id:P7501BA1  Release:3  CD:A113\r\r\nMaintenance product id:P7501BA1  Release:3  CD:A113\r\r\ncopying files . . .\r\n\f=================================================================\r\n=                  INSTALLING SurePOS ACE                       =\r\n=================================================================\r\nDecompressing files . . .\r\nUpdating logical file names...\r\n\f=================================================================\r\n=                      SurePOS ACE
+              =\r\n=================================================================\r\n=================================================================\r\n=                Installation Process Completed.
+          =\r\n=                                                               =\r\n= Please remove your installation media CD ROM from drive P:    =\r\n= and place it in a safe place.
+      =\r\n=                                                               =\r\n= You may now exit the installation process by selecting option =\r\n= 9 from the following menu. Choosing this option cleans up
+  =\r\n=      temporary files that the install process created.        =\r\n=================================================================\r\n\f\f=================================================================\r\n=                                                               =\r\n=                TERMINATING INSTALLATION PROCESS               =\r\n=                                                               =\r\n=================================================================\r\n=================================================================\r\n=                                                               =\r\n=
+         Before running the SurePOS ACE application            =\r\n=           the following steps must be completed:              =\r\n=                                                               =\r\n= If the first install of SurePOS ACE or you migrated from SAV2:=\r\n=    - Configure Controller Primary and Background              =\r\n=      applications.                                            =\r\n=    - Configure Terminal Load Definition.                      =\r\n=    - Activate configuration changes.                          =\r\n=    - Activate the installation using ASM.                     =\r\n=    - Start Checkout Support Background Processor.             =\r\n=                                                               =\r\n= If you installed a new level of SurePOS ACE:                  =\r\n=    - Activate the installation using ASM.                     =\r\n=                                                               =\r\n=================================================================\r\n\f", "stdout_lines": ["", "C>DEFINE p:=c:/ace3d/", "", "C>p:install", "", "C>ECHO off", "", "=================================================================", "=              Preparing for installation process               =", "=================================================================", "=================================================================", "=         Copying installation bat files from CD ROM            =", "=================================================================", "", "=================================================================", "=         Copying installation bat files from CD ROM            =", "=================================================================", "", "=================================================================", "=                  INSTALLING SurePOS ACE                       =", "=================================================================", "    Current product id:P7501BA1  Release:3  CD:A113", "", "Maintenance product id:P7501BA1  Release:3  CD:A113", "", "copying files . . .", "", "=================================================================", "=                  INSTALLING SurePOS ACE                       =", "=================================================================", "Decompressing files . . .", "Updating logical file names...", "", "=================================================================", "=                      SurePOS ACE                              =", "=================================================================", "=================================================================", "=                Installation Process Completed.                =", "=
+                                                =", "= Please remove your installation media CD ROM from drive P:    =", "= and place it in a safe place.                                 =", "=
+                                            =", "= You may now exit the installation process by selecting option =", "= 9 from the following menu. Choosing this option cleans up     =", "=      temporary files that the install process created.        =", "=================================================================", "", "", "=================================================================", "=
+                                            =", "=                TERMINATING INSTALLATION PROCESS               =", "=                                                               =", "=================================================================", "=================================================================", "=                                                               =", "=         Before running the SurePOS ACE application            =", "=           the following steps must be completed:              =", "=                                                               =", "= If the first install of SurePOS ACE or you migrated from SAV2:=", "=    - Configure Controller Primary and Background              =", "=      applications.                                            =", "=    - Configure Terminal Load Definition.                      =", "=    - Activate configuration changes.                          =", "=    - Activate the installation using ASM.                     =", "=    - Start Checkout Support Background Processor.             =", "=                                                               =", "= If you installed a new level of SurePOS ACE:                  =", "=    - Activate the installation using ASM.
+                    =", "=                                                               =", "=================================================================", ""]}
+
+TASK [installation : Starting asm and reboot controller...] ********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:53
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: Error deleting remote temporary files (rc: 1, stderr: Shared
+connection to 10.89.105.98 closed.  })
+changed: [10.89.105.98] => {"changed": true, "cmd": "python2 /mnt/c/adx_imnt/asm.py Accept", "delta": "0:01:02.204764", "end": "2022-11-14 17:21:28.439612", "msg": "", "rc": 0, "start": "2022-11-14 17:20:26.234848", "stderr": "Thread lost SVC connection with 4690\nSvcProcessLauncher::pumperThread/2: Error 0x805C4185 reading from 4690 pipe\nstatic SvcInterface* SvcInterfaceFactory::getThreadInstance(int32_t): Error, all calls will fail until SVC access is initialized\nThread lost SVC connection with 4690\nThread lost SVC connection with 4690\nSvcProcessLauncher::pumperThread/1: Error 0x805C4185 reading from 4690 pipe\nstatic SvcInterface* SvcInterfaceFactory::getThreadInstance(int32_t): Error, all calls will fail until SVC access is initialized", "stderr_lines": ["Thread lost SVC connection with 4690", "SvcProcessLauncher::pumperThread/2: Error 0x805C4185 reading from 4690 pipe", "static SvcInterface* SvcInterfaceFactory::getThreadInstance(int32_t): Error, all calls will fail until SVC access is initialized", "Thread lost SVC connection with 4690", "Thread lost SVC connection with 4690", "SvcProcessLauncher::pumperThread/1: Error 0x805C4185 reading from 4690 pipe", "static SvcInterface* SvcInterfaceFactory::getThreadInstance(int32_t): Error, all calls will fail until SVC access is initialized"], "stdout": "Accepting the maintenance of ACE...\nMore info, please check the cadx_sdt1:adxcshsf.dat file", "stdout_lines": ["Accepting the maintenance of ACE...", "More info, please check the cadx_sdt1:adxcshsf.dat file"]}
+
+TASK [installation : Wait For Reboot If There Was A Change] ********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:57
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "elapsed": 88}
+
+TASK [Cleaning directories.] ***************************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:63
+
+TASK [installation : Check ADX_IMNT/UINSTALL Exist] ****************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:8
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668464364.7893307, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 0, "charset": "binary", "ctime": 1668464364.7893307, "dev": 48, "device_type": 0, "executable": true, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 56, "isblk": false, "ischr": false, "isdir": true, "isfifo": false, "isgid": false, "islnk": false, "isreg": false, "issock": false, "isuid": false, "mimetype": "inode/directory", "mode": "0770", "mtime": 1668464364.7893307, "nlink": 2, "path": "/mnt/c/adx_imnt/UINSTALL/", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": false, "rusr": true, "size": 0, "uid": 500, "version": null, "wgrp": true, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": false, "xusr": true}}
+
+TASK [installation : Cleanning ADX_IMNT/UINSTALL] ******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:13
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -r /mnt/c/adx_imnt/UINSTALL/", "delta": "0:00:00.098432", "end": "2022-11-14 17:22:59.244320", "msg": "", "rc": 0, "start": "2022-11-14 17:22:59.145888", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Check ACE3D Exist] ****************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:17
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668464364.7893307, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 0, "charset": "binary", "ctime": 1668464364.7893307, "dev": 48, "device_type": 0, "executable": true, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 68, "isblk": false, "ischr": false, "isdir": true, "isfifo": false, "isgid": false, "islnk": false, "isreg": false, "issock": false, "isuid": false, "mimetype": "inode/directory", "mode": "0770", "mtime": 1668464364.7893307, "nlink": 2, "path": "/mnt/c/ACE3D/", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": false, "rusr": true, "size": 0, "uid": 500, "version": null, "wgrp": true, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": false, "xusr": true}}
+
+TASK [installation : Cleanning ACE3D if exist] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:22
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -r /mnt/c/ACE3D/", "delta": "0:00:01.030833", "end": "2022-11-14 17:23:03.153226", "msg": "", "rc": 0, "start": "2022-11-14 17:23:02.122393", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Check adx_imnt:asm.py scripts Exist] **********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:26
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668464386.7893307, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 1, "charset": "us-ascii", "checksum": "87fc6e1c7befe88f4176f7ce3fb3dfbfd1a08d88", "ctime": 1668464386.7893307, "dev": 48, "device_type": 0, "executable": false, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 108, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "text/plain", "mode": "0660", "mtime": 1668464386.7893307, "nlink": 2, "path": "/mnt/c/adx_imnt/asm.py", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": false, "rusr": true, "size": 715, "uid": 500, "version": null, "wgrp": true, "woth": false, "writeable": true, "wusr": true, "xgrp": false, "xoth": false, "xusr": false}}
+
+TASK [installation : Deleting adx_imnt:asm.py] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:31
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -f /mnt/c/adx_imnt/asm.py", "delta": "0:00:00.031285", "end": "2022-11-14 17:23:06.802818", "msg": "", "rc": 0, "start": "2022-11-14 17:23:06.771533", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Check adx_imnt:auto.bat scripts Exist] ********************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:35
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [10.89.105.98] => {"changed": false, "stat": {"atime": 1668464386.7893307, "attr_flags": "", "attributes": [], "block_size": 4096, "blocks": 1, "charset": "us-ascii", "checksum": "026d133d59ecbf4fbfd5fad79c6f261eb005a8ea", "ctime": 1668464386.7893307, "dev": 48, "device_type": 0, "executable": true, "exists": true, "gid": 500, "gr_name": "vx4690", "inode": 110, "isblk": false, "ischr": false, "isdir": false, "isfifo": false, "isgid": false, "islnk": false, "isreg": true, "issock": false, "isuid": false, "mimetype": "text/plain", "mode": "0770", "mtime": 1668464386.7893307, "nlink": 2, "path": "/mnt/c/adx_imnt/auto.bat", "pw_name": "vxuser", "readable": true, "rgrp": true, "roth": false, "rusr": true, "size": 74, "uid": 500, "version": null, "wgrp": true, "woth": false, "writeable": true, "wusr": true, "xgrp": true, "xoth": false, "xusr": true}}
+
+TASK [installation : Deleting adx_imnt:auto.bat] *******************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Prepare_adx_imnt_Directory.yml:40
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": "rm -f /mnt/c/adx_imnt/auto.bat", "delta": "0:00:00.045747", "end": "2022-11-14 17:23:09.768273", "msg": "", "rc": 0, "start": "2022-11-14 17:23:09.722526", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+META: role_complete for 10.89.105.98
+
+TASK [installation : Check de log file of ASM] *********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:68
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": ["cat", "adxcshsf.dat"], "delta": "0:00:00.060874", "end": "2022-11-14 17:23:11.471398", "msg": "", "rc": 0, "start": "2022-11-14 17:23:11.410524", "stderr": "", "stderr_lines": [], "stdout": "\r\nRUNNING  17:20:26 ADXCST0L Y 3AG  BY                                            \r\n                    Toshiba SurePOS ACE     8.3.1\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\nDD   Controller is not active on the LAN.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\nEE   Controller is not active on the LAN.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\nIPL.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\nSUCCESS  17:21:16 ADXCST0L Y 3AG  BY
+            \r\n                                                                                \r\n                                                                                \r\nRUNNING  17:21:40 ADXILT0L adx_ipgm:ADXCATGD.DAT A                                \r\nSUCCESS  17:21:47 ADXILT0L adx_ipgm:ADXCATGD.DAT A                                ", "stdout_lines": ["", "RUNNING  17:20:26 ADXCST0L Y 3AG  BY
+                                   ", "                    Toshiba SurePOS ACE     8.3.1\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", "DD   Controller is not active on the LAN.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", "EE   Controller is not active on the LAN.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", "IPL.\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", "SUCCESS  17:21:16 ADXCST0L Y 3AG  BY                                              ", "
+             ", "                                                                                ", "RUNNING  17:21:40 ADXILT0L adx_ipgm:ADXCATGD.DAT A                                ", "SUCCESS  17:21:47 ADXILT0L adx_ipgm:ADXCATGD.DAT A                                "]}
+
+TASK [Report Module Level.] ****************************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/main.yml:73
+
+TASK [installation : Run python to creaate RCP] ********************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Report_Module_Backup.yml:2
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": ["python", "generate_rml_rcp_cmd.py", "-p", "AG"], "delta": "0:00:00.222569", "end": "2022-11-14 17:23:13.056795", "msg": "", "rc": 0, "start": "2022-11-14 17:23:12.834226", "stderr": "", "stderr_lines": [], "stdout": "Generating RCP CMD file for products AG \nADXCSS0L Y 1 AG \r\n\nGenerating RCP selection file:adx_idt1:adxcshcf.dat\nGenerating RCP CMD file: adx_idt1:rcpcmd.dat", "stdout_lines": ["Generating RCP CMD file for products AG ", "ADXCSS0L Y 1 AG ", "", "Generating RCP selection file:adx_idt1:adxcshcf.dat", "Generating RCP CMD file: adx_idt1:rcpcmd.dat"]}
+
+TASK [installation : Run python to Run the RCP Job] ****************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Report_Module_Backup.yml:7
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": ["run4690", "-npp", "command.286", "-c", "adxcsh0l", "backgrnd", "nnnn"], "delta": "0:00:00.542327", "end": "2022-11-14 17:23:14.573805", "msg": "", "rc": 0, "start": "2022-11-14 17:23:14.031478", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+
+TASK [installation : Print RML] ************************************************
+task path: /home/ebossteam/temp/10.89.105.98/playbooks/os4690/roles/installation/tasks/Report_Module_Backup.yml:14
+[WARNING]: sftp transfer mechanism failed on [10.89.105.98]. Use
+ANSIBLE_DEBUG=1 to see detailed information
+[WARNING]: scp transfer mechanism failed on [10.89.105.98]. Use ANSIBLE_DEBUG=1
+to see detailed information
+changed: [10.89.105.98] => {"changed": true, "cmd": ["python", "print_report_module_levels.py"], "delta": "0:00:00.078605", "end": "2022-11-14 17:23:15.214141", "msg": "", "rc": 0, "start": "2022-11-14 17:23:15.135536", "stderr": "", "stderr_lines": [], "stdout": "Evaluating product levels.\n\nProduct = Toshiba SurePOS ACE     8.3.1 \n|---------current level-----------|                                \n|PID = 7501BA1
+                  |                                \n|SP/Build = A113                  |                                \n|Release = 301                    |                                \n|Base level = A000
+              |                                \n|Date applied = 11/14/22 17:21    |                                \n|PTF = U000000                    |                                \n|Emergency Fix = EF 0007
+          |                                \n----------------------------------|                                ", "stdout_lines": ["Evaluating product levels.", "", "Product = Toshiba SurePOS ACE     8.3.1 ", "|---------current level-----------|                                ", "|PID = 7501BA1                    |                                ", "|SP/Build = A113                  |                                ", "|Release = 301                    |                                ", "|Base level = A000                |                                ", "|Date applied = 11/14/22 17:21    |
+", "|PTF = U000000                    |                                ", "|Emergency Fix = EF 0007          |                                ", "----------------------------------|
+  "]}
+META: role_complete for 10.89.105.98
+META: role_complete for 10.89.105.98
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP *********************************************************************
+10.89.105.98               : ok=38   changed=23   unreachable=0    failed=0    skipped=4    rescued=0    ignored=0
