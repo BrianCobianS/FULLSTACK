@@ -284,7 +284,7 @@ const Enviarmail= async (datos)=>{
 															<table class="heading_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 																<tr>
 																	<td class="pad" style="width:100%;text-align:center;padding-top:15px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-																		<p style="margin: 0; color: #ffffff; font-size: 62px; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: 700; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">The controller ${ip} has been recived!</>
+																		<p style="margin: 0; color: #ffffff; font-size: 50px; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: 700; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">The controller ${ip} has been recived!</>
 																	</td>
 																</tr>
 															</table>

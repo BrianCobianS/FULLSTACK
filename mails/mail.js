@@ -1,18 +1,18 @@
 const nodemailer = require("nodemailer");
 const datos= {  
     boleano: '0',
-    path: '/var/log/logscontroladores/10.89.105.98-20221123_1457.txt',
-    message: 'The installation failed, the error occurred at 			',
-    opc: '2',
-    fecha: 'Now',
-    ASM: 'Test',
+    path: 'C:/Users/brian.cobian/Desktop/IMDesatendida/Fullstack-Linux/mails/log.txt',
+    message: 'The installation failed, the error messague is: Backup maintenance must be accepted before testing another.',
+    opc: '1',
+    fecha: '12712/12',
+    ASM: 'accept',
     paquetes: 'ACE,EPS',
-    version: 'Leia',
-    nivel: 'V8R2.l125.7',
+    version: 'Morty',
+    nivel: '12.ver12',
     email: 'brian.cobian@toshibagcs.com',
     pass: 'm1',
     usr: 'master',
-    ip: '10.89.105.98',
+    ip: '12.12.12',
 
 } 
 
