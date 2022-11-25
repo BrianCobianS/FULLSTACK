@@ -13,7 +13,7 @@ const Enviarmail= async (datos)=>{
     const{  ip, usr, pass, email, nivel, version, paquetes, ASM, fecha, opc} = datos
     let temp='';
 	let time = '';
-	fecha == 'Now' ? time = 'Now' : time = fecha.slice(0,4)+'/'+fecha.slice(4,6)+'/'+fecha.slice(6,8)+' at: '+fecha.slice(9,11)+':'+fecha.slice(11,13)
+	fecha == 'Now' ? time = 'Now' : time = fecha.slice(6,8)+'/'+fecha.slice(4,6)+'/'+fecha.slice(0,4)+' at: '+fecha.slice(8,10)+':'+fecha.slice(10,12)
     opc==1 ? temp ='Installation': temp ='Migration'
     console.log(email)
     const info = await transporter.sendMail({
