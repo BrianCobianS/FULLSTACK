@@ -55,7 +55,7 @@ def changeBat(fileDirectory):
             if 'SUCCES' in linea:
                  Exito=1
             if 'Print RML' in linea or ban==1:
-                Succes=Succes+linea
+                # Succes=Succes+linea
                 ban=1
             i += 1
     if Exito ==1:
