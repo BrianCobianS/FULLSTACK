@@ -6,8 +6,8 @@ const Enviarmail= async (datos)=>{
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-          user: 'unattendedinstallation@gmail.com', // generated ethereal user
-          pass: 'futbizzvawdfzkgn', // generated ethereal password
+			user: 'unattendedinstallation@gmail.com', // generated ethereal user
+			pass: 'lxcyphalpqqvhuvi', // generated ethereal password
         },
     });
     const{  ip, usr, pass, email, nivel, version, paquetes, ASM, fecha, opc} = datos
