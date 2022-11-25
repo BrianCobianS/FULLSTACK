@@ -12,6 +12,8 @@ const Enviarmail= async (datos)=>{
     });
     const{  ip, usr, pass, email, nivel, version, paquetes, ASM, fecha, opc} = datos
     let temp='';
+	let time = '';
+	fecha == 'Now' ? time = 'Now' : time = fecha.slice(0,4)+'/'+fecha.slice(4,6)+'/'+fecha.slice(6,8)+' at: '+fecha.slice(9,11)+':'+fecha.slice(11,13)
     opc==1 ? temp ='Installation': temp ='Migration'
     console.log(email)
     const info = await transporter.sendMail({
@@ -309,7 +311,7 @@ const Enviarmail= async (datos)=>{
 															<table class="heading_block block-2" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 																<tr>
 																	<td class="pad" style="width:100%;text-align:center;padding-top:20px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-																		<h2 style="margin: 0; color: #ffffff; font-size: 35px; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: 700; letter-spacing: normal; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Installation parameters:</span></h2>
+																		<h2 style="margin: 0; color: #ffffff; font-size: 35px; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: 700; letter-spacing: normal; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">${temp} parameters:</span></h2>
 																	</td>
 																</tr>
 															</table>
@@ -342,7 +344,7 @@ const Enviarmail= async (datos)=>{
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Level: <strong style="color: #ffffff;">${nivel}</strong> </li>
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">packages: <strong style="color: #ffffff;">${paquetes}</strong></li>
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">ASM: <strong style="color: #ffffff;">${ASM}</strong></li>
-																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Installation date: <strong style="color: #ffffff;">${fecha} </strong></li>
+																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Installation date: <strong style="color: #ffffff;">${time} </strong></li>
 																			</ol> 
 																	</div>
 																	</td>
@@ -375,7 +377,7 @@ const Enviarmail= async (datos)=>{
 																<tr>
 																	<td class="pad" style="padding-top:10px;padding-right:10px;padding-bottom:45px;padding-left:10px;">
 																		<div style="color:#d5d5d5;font-size:18px;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-weight:400;line-height:150%;text-align:center;direction:ltr;letter-spacing:0px;mso-line-height-alt:27px;">
-																			<p style="margin: 0;">Your controller ${ip} has been received and scheduled for installation on date ${fecha}. You will receive an email with the status of the installation once is finished.</p>
+																			<p style="margin: 0;">Your controller ${ip} has been received and scheduled for installation on date: ${time}. You will receive an email with the status of the installation once is finished.</p>
 																		</div>
 																	</td>
 																</tr>
