@@ -37,6 +37,7 @@ def changeBat(fileDirectory):
         ban = 0
         ban1 = 0
         i=0
+        Error1=0
         Exito=0
         reserva=[]
         Error='The installation failed, the error message is: '
