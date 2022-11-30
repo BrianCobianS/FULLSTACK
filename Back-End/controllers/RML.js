@@ -5,7 +5,7 @@ const RML = (req,res) =>{
     const {checkcontroller} = req.body
     console.log(checkcontroller)
     console.log(checkcontroller.ip)
-    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh 2>&1 | tee /home/ebossteam/RML/ojjo/salidadelnode.txt ${checkcontroller.ip} ${checkcontroller.usr} ${checkcontroller.pass} `, (error, stdout, stderr) => {
+    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh ${checkcontroller.ip} ${checkcontroller.usr} ${checkcontroller.pass} `, (error, stdout, stderr) => {
         if (error) {
         console.error(`error: ${error.message}`);
         res.json({msg:`The controller information is: ${error.message}`})
