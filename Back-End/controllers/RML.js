@@ -5,7 +5,7 @@ const RML = (req,res) =>{
     const {checkcontroller} = req.body
     console.log(checkcontroller)
     console.log(checkcontroller.ip)
-    exec(`python3 /home/ebossteam/RML/ojjo/Inventories/Inventory.py ${Controlador.ip} ${Controlador.usr} ${Controlador.pass}`, (error, stdout, stderr) => {
+    exec(`python3 /home/ebossteam/RML/ojjo/Inventories/Inventory.py ${checkcontroller.ip} ${checkcontroller.usr} ${checkcontroller.pass}`, (error, stdout, stderr) => {
         if (error) {
         console.error(`error: ${error.message}`);
         return;
@@ -16,7 +16,7 @@ const RML = (req,res) =>{
         }
         console.log(`stdout: \n${stdout}`);
      });
-    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh 2>&1 | tee /home/ebossteam/RML/ojjo/salidadelnode.txt`, (error, stdout, stderr) => {
+    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh 2>&1 | tee salidadelnode.txt`, (error, stdout, stderr) => {
         if (error) {
         console.error(`error: ${error.message}`);
         res.json({msg:`The controller information is: ${error.message}`})
