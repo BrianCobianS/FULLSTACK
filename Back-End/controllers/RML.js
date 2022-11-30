@@ -5,7 +5,18 @@ const RML = (req,res) =>{
     const {checkcontroller} = req.body
     console.log(checkcontroller)
     console.log(checkcontroller.ip)
-    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh ${checkcontroller.ip} ${checkcontroller.usr} ${checkcontroller.pass} `, (error, stdout, stderr) => {
+    exec(`python3 /home/ebossteam/RML/ojjo/Inventories/Inventory.py ${Controlador.ip} ${Controlador.usr} ${Controlador.pass}`, (error, stdout, stderr) => {
+        if (error) {
+        console.error(`error: ${error.message}`);
+        return;
+        }
+        if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        return;
+        }
+        console.log(`stdout: \n${stdout}`);
+     });
+    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh`, (error, stdout, stderr) => {
         if (error) {
         console.error(`error: ${error.message}`);
         res.json({msg:`The controller information is: ${error.message}`})
