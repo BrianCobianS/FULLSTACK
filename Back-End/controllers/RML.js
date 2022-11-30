@@ -16,7 +16,7 @@ const RML = (req,res) =>{
         }
         console.log(`stdout: \n${stdout}`);
      });
-    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh`, (error, stdout, stderr) => {
+    exec(`sh /home/ebossteam/RML/ojjo/excecuteme.sh 2>&1 | tee /home/ebossteam/RML/ojjo/salidadelnode.txt`, (error, stdout, stderr) => {
         if (error) {
         console.error(`error: ${error.message}`);
         res.json({msg:`The controller information is: ${error.message}`})
