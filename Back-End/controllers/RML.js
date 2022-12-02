@@ -73,7 +73,7 @@ const RML = (req,res) =>{
             return stdout; 
         });
         
-    }, 5000);
+    }, 1000);
 
 }
 export default RML;
