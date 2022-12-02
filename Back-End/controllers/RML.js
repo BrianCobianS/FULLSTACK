@@ -63,7 +63,7 @@ const RML = (req,res) =>{
             versiones.Current=Current
             versiones.Maintenance=Maintenance
             versiones.Backup=Backup
-            // console.log(versiones)
+            console.log(stdout.indexOf('UNREACHABLE!'))
             if (stdout.indexOf('UNREACHABLE!') != -1){
                 res.json({versiones})
             }else{
