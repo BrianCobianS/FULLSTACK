@@ -63,8 +63,8 @@ const RML = (req,res) =>{
             versiones.Current=Current
             versiones.Maintenance=Maintenance
             versiones.Backup=Backup
-            console.log(stdout.indexOf('UNREACHABLE!'))
-            if (stdout.indexOf('UNREACHABLE!') != -1){
+            // console.log(stdout.indexOf('UNREACHABLE!'))
+            if (stdout.indexOf('UNREACHABLE!') == -1){
                 res.json({versiones})
             }else{
                 res.json({error:`The controller ${checkcontroller.ip} can't be reach`})
