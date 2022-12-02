@@ -64,7 +64,7 @@ const RML = (req,res) =>{
             versiones.Maintenance=Maintenance
             versiones.Backup=Backup
             // console.log(versiones)
-            res.json({stdout})
+            res.json({versiones})
             return stdout; 
         });
         
