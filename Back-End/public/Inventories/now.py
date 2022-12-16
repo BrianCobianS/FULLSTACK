@@ -41,7 +41,7 @@ contenido.insert(3,"python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/Bac
 # print("echo "+OPC+" >> /home/ebossteam/temp/"+IP+"/playbooks/os4690/roles/installation/files/AUTO.BAT")
 contenido.insert(4,"echo $(date +%Y%m%d_%H%M) > /home/ebossteam/temp/"+IP+"/date.txt")
 # print("echo $(date +%Y%m%d_%H%M) > /home/ebossteam/temp/"+IP+"/date.txt")
-contenido.insert(5,"ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os4690/Install_Controller.yml -vv  -i /home/ebossteam/temp/"+IP+"/Inventories/import_inventory.yml -e 'level_complement="+COMP+" opc="+OPC+" ASM="+ASM+" level_name="+LEV+" level_complementEPS="+EPSCOMPLE+" Tcxpay="+TCXPAY+" level_complementTcxpay="+TCXPAYCOMPLE+" Common="+COMMONOPC+" level="+COMMON+" PinPad="+PINPADOPC+" levelPIN="+PINPAD+"' 2>&1 | tee /var/log/logscontroladores/"+IP+"-$(date +%Y%m%d_%H%M).txt")
+contenido.insert(5,"ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os4690/Install_Controller.yml -vv  -i /home/ebossteam/temp/"+IP+"/Inventories/import_inventory.yml -e 'level_complement="+COMP+" opc="+OPC+" ASM="+ASM+" level_name="+LEV+" EPS="+EPS+" level_complementEPS="+EPSCOMPLE+" Tcxpay="+TCXPAY+" level_complementTcxpay="+TCXPAYCOMPLE+" Common="+COMMONOPC+" level="+COMMON+" PinPad="+PINPADOPC+" levelPIN="+PINPAD+"' 2>&1 | tee /var/log/logscontroladores/"+IP+"-$(date +%Y%m%d_%H%M).txt")
 # print("ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os4690/Install_Controller.yml -vv  -i /home/ebossteam/temp/"+IP+"/Inventories/import_inventory.yml -e 'level_complement="+COMP+" opc="+OPC+" ASM="+ASM+" level_name="+LEV+"' 2>&1 | tee /var/log/logscontroladores/"+IP+"-$(date +%Y%m%d_%H%M).txt")
 
 # print("rm -r /home/ebossteam/temp/"+IP)

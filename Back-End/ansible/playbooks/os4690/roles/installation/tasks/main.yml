@@ -30,6 +30,7 @@
   include_role:
     name: installation
     tasks_from: ACE4D_INSTA.yml
+  when: EPS== "1"
 
 - name: Installation Tcxpay
   include_role:
