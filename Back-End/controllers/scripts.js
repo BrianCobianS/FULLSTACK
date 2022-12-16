@@ -16,8 +16,6 @@ const API = (req,res) =>{
     const {Controladores} = req.body
     for(let i=0;i<Controladores.length;i++){
         eliminar.forEach(element => Controladores[i].fecha=removecharcter(Controladores[i].fecha,element));
-        Controladores[i].Tcxpay != 0 ? Controladores[i].Tcxpay = 1 : Controladores[i].Tcxpay = 0
-        Controladores[i].nivelEPS != 0 ? Controladores[i].nivelEPS = 1 : Controladores[i].nivelEPS = 0
         console.log(Controladores[i])
 
         if (Controladores[i].fecha!= 'Now'){
