@@ -1,0 +1,51 @@
+##########################################
+## Create Directory If It Does Not Exist.
+## Required variables:
+## - C:/ 
+##########################################
+
+---
+- name: Check adx_imnt:adxcftid.dat Exist
+  stat:
+    path: "{{c_adx_imnt}}adxcftid.dat"
+  register: imnt_id
+
+- name: Copying adx_imnt:adxcftid.dat if not exist
+  shell: "cp /mnt/cdrom/4690/adxcftid.dat {{c_adx_imnt}} && echo adxcftid.dat copied to adx_imnt"
+  when: not imnt_id.stat.exists
+
+- name: Check adx_imnt:adxefbif.dat Exist
+  stat:
+    path: "{{c_adx_imnt}}adxefbif.dat"
+  register: imnt_if
+
+- name: Copying adx_imnt:adxefbif.dat if not exist
+  shell: "cp /mnt/cdrom/4690/adxefbif.dat {{c_adx_imnt}} && echo adxefbif.dat copied to adx_imnt"
+  when: not imnt_if.stat.exists
+
+- name: Check adx_imnt:adxxtdfi.dat Exist
+  stat:
+    path: "{{c_adx_imnt}}adxxtdfi.dat"
+  register: imnt_fi
+
+- name: Copying adx_imnt:adxxtdfi.dat if not exist
+  shell: "cp /mnt/cdrom/4690/adxxtdfi.dat {{c_adx_imnt}} && echo adxxtdfi.dat copied to adx_imnt"
+  when: not imnt_fi.stat.exists
+
+- name: Check adx_imnt:pycremo1.py Exist
+  stat:
+    path: "{{c_adx_imnt}}PYCREMO1.PY"
+  register: imnt_py01
+
+- name: Copying adx_imnt:pycrem01.py if not exist
+  shell: "cp /mnt/cdrom/4690/PYCREMO1.PY {{c_adx_imnt}} && echo pycrem01.py copied to adx_imnt"
+  when: not imnt_py01.stat.exists
+
+- name: Check adx_imnt:PYCREMO2.PY Exist
+  stat:
+    path: "{{c_adx_imnt}}PYCREMO2.PY"
+  register: imnt_py02
+
+- name: Copying adx_imnt:PYCREM02.PY if not exist
+  shell: "cp /mnt/cdrom/4690/PYCREMO2.PY {{c_adx_imnt}} && echo PYCREM02.PY copied to adx_imnt"
+  when: not imnt_py02.stat.exists

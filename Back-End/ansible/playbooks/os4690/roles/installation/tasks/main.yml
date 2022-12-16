@@ -1,0 +1,66 @@
+
+- name: Deleting ACE3D for installaiton
+  include_role:
+    name: installation
+    tasks_from: Erase_ACE.yml
+  when: opc  == "1"
+
+- name: Create Landing Zone
+  include_role:
+    name: installation
+    tasks_from: Create_Landing_Zone.yml
+
+- name: Copy Files In Landing Zone
+  copy:
+    src: "{{item}}"
+    dest: "{{landing_zone}}"
+  with_fileglob: "{{config_dir}}/*.*"
+
+- name: Preparing the adx_imnt directory.
+  include_role:
+    name: installation
+    tasks_from: Prepare_adx_imnt_Directory.yml
+
+- name: installation ACE3D
+  include_role:
+    name: installation
+    tasks_from: ACE3D_INSTA.yml
+
+- name: Installation Tcxpay
+  include_role:
+    name: installation
+    tasks_from: Tcxpay.yml
+  when: Tcxpay == "1"
+
+- name: installation ACE4D EPS
+  include_role:
+    name: installation
+    tasks_from: ACE4D_INSTA.yml
+
+- name: Installation TcxpayPINPAD
+  include_role:
+    name: installation
+    tasks_from: PinPad.yml
+  when: PinPad == "1"
+
+- name: Installation TcxpayCommon
+  include_role:
+    name: installation
+    tasks_from: Common.yml
+  when: Common == "1"
+
+- name: Cleaning directories.
+  include_role:
+    name: installation
+    tasks_from: Prepare_adx_imnt_Directory.yml
+
+- name: Report Module Level.
+  include_role:
+    name: installation
+    tasks_from: Report_Module_Backup.yml
+
+- name: Cleaning adx_imnt
+  shell: "rm -r {{c_adx_imnt}}*"
+  ignore_errors: true
+
+

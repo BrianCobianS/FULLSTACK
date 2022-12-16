@@ -1,0 +1,70 @@
+
+- name: Preparing the adx_imnt/ directory.
+  include_role:
+    name: installation
+    tasks_from: Prepare_adx_imnt_Directory.yml
+
+- name: Cheks if there is an tcxpay-PinPad old Version dat
+  stat:
+    path: "{{c_adx_ipgm}}ADXCFTID.DAT"
+  register: lp
+
+- name: Deleting the tcxpay-PinPad old Version dat and Installation
+  shell: "rm {{c_adx_ipgm}}ADXCFTID.DAT"
+  when: lp.stat.exists
+
+- name: Check adx_imnt:PYCINST.BAT scripts Exist
+  stat:
+    path: "{{c_adx_imnt}}PYCINST.BAT"
+  register: imnt_pay
+
+- name: Deleting adx_imnt:PYCINST.BAT
+  shell: "rm -f {{c_adx_imnt}}PYCINST.BAT"
+  when: imnt_pay.stat.exists
+
+- name: Copying files from Landing zone to adx_imnt
+  shell: "cp {{landing_zone}}asm.py {{c_adx_imnt}}"
+
+- name: Download Toshiba Nexus Package TCxPay PIN Pad From Nexus
+  get_url:
+    url: "{{nexus_url2}}/repository/tgcs-maven-release/com/tgcs/tcxpay/tcxpay-pinpad-spt-asm/{{levelPIN}}/tcxpay-pinpad-spt-asm-{{levelPIN}}.iso"
+    dest: "{{landing_zone}}"
+    timeout: 300
+
+- name: Copy the iso to F:/
+  shell: "cp {{landing_zone}}tcxpay-pinpad-spt-asm-{{levelPIN}}.iso {{f_drive}} && echo ISO abailable in F:/"
+ 
+- name: Mount ISO Image
+  command: "{{run_4690}} isomount f:/adxetc/home/vxuser/Landing/tcxpay-pinpad-spt-asm-{{levelPIN}}.iso"
+
+- name: Copying PYCINST.BAT from cdrom/ to adx_imnt
+  shell: "cp /mnt/cdrom/4690/PYCINST.BAT {{c_adx_imnt}} && echo PYCINST.BAT was copied from cdrom/ to adx_imnt"
+
+- name: Starting installation's scripts
+  shell: "{{c_adx_imnt}}PYCINST.BAT SILENT"
+
+- name: Check the adx_imnt/ installation files exist.
+  include_role:
+    name: installation
+    tasks_from: Check_adx_imnt_FilesPINPAD.yml
+
+- name: Deleting the ISO's form landing zone and F:/
+  shell: "rm -f {{landing_zone}}tcxpay-pinpad-spt-asm-{{levelPIN}}.iso; rm -f {{f_drive}}tcxpay-pinpad-spt-asm-{{levelPIN}}.iso;"
+
+- name: Starting asm and reboot controller...
+  shell: "python2 {{c_adx_imnt}}asm.py Accept FI"
+  ignore_errors: true
+
+- name: Wait For Reboot If There Was A Change
+  wait_for_connection:
+    sleep: 5
+    delay: 10
+    timeout: 300
+
+- name: Check de log file of ASM
+  command: cat adxcshsf.dat
+  args:
+      chdir: "{{c_adx_sdt1}}"
+
+- name: Cleaning adx_imnt
+  shell: "rm -r {{c_adx_imnt}}*"

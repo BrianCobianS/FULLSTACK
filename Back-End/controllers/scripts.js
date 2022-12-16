@@ -16,21 +16,23 @@ const API = (req,res) =>{
     const {Controladores} = req.body
     for(let i=0;i<Controladores.length;i++){
         eliminar.forEach(element => Controladores[i].fecha=removecharcter(Controladores[i].fecha,element));
+        Controladores[i].Tcxpay != 0 ? Controladores[i].Tcxpay = 1 : Controladores[i].Tcxpay = 0
+        Controladores[i].nivelEPS != 0 ? Controladores[i].nivelEPS = 1 : Controladores[i].nivelEPS = 0
         console.log(Controladores[i])
-        // console.log(Controladores[i].fecha)
+
         if (Controladores[i].fecha!= 'Now'){
-            // console.log(Controladores[i].fecha)
             shel(Controladores[i]);
         }else{
-            setTimeout(() => {
-                ansible(Controladores[i]);
-            }, 5000);
+            // setTimeout(() => {
+            //     ansible(Controladores[i]);
+            // }, 5000);
             now(Controladores[i])
         }
-        console.log(Controladores[i].email)
-        
-        Enviarmail(Controladores[i])
-        // Enviarmail({email}=Controladores[i])
+        // console.log(Controladores[i].email)
+        // Enviarmail(Controladores[i])
+
+
+
     }    
     res.json({msg:`We have received the controller(s), you will receive an email(s) to the email(s) you registered with the installation status`})   
 

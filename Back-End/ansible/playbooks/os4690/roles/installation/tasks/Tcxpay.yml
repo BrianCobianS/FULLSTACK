@@ -1,0 +1,78 @@
+- name: Create Directory UINSTALL/
+  file:
+    path: "{{c_adx_imnt}}UINSTALL/"
+    state: directory
+
+- name: Download Toshiba Nexus Package Tcxpay From Nexus
+  get_url:
+    url: "{{nexus_url2}}/repository/tgcs-maven-snapshot/com/toshibacommerce/ace/ACE6D001/{{level_name}}-SNAPSHOT/ACE6D001-{{level_complementTcxpay}}.zip"
+    dest: "{{landing_zone}}"
+    timeout: 300
+    
+- name: Create Directory ACE46D If Does Not Exist
+  file:
+    path: "{{c_drive}}ACE6D/"
+    state: directory
+
+
+- name: Copy ACE6D
+  shell: "cp {{landing_zone}}ACE6D001-{{level_complementTcxpay}}.zip {{c_drive}}ACE6D/ACE6D001.zip;"
+
+- name: cp unZIp.py and Unziping the packages of installation
+  shell: "cp {{landing_zone}}unZIP.PY {{c_adx_imnt}}UINSTALL/;python3 {{c_adx_imnt}}UINSTALL/unZIP.PY 6"
+  
+- name: cp updFile.py Updating the installation files to automate the installaiton
+  shell: "cp {{landing_zone}}updFile.py {{c_adx_imnt}}UINSTALL/; python3 {{c_adx_imnt}}UINSTALL/updFile.py 6"
+
+- name: Copy Files In UINSTALL
+  shell: "cp {{landing_zone}}asm.py {{c_adx_imnt}}/;cp {{landing_zone}}AUTO6D.BAT {{c_adx_imnt}};cp {{landing_zone}}START6D.BAT {{c_adx_imnt}}UINSTALL/;"
+
+- name: Cheks if there is an ACE6D old Version dat
+  stat:
+    path: "{{c_adx_ipgm}}ADXCDTAD.DAT"
+  register: ACE6DPCF
+
+- name: Deleting the ACE6D old Version dat and installation
+  shell: "rm {{c_adx_ipgm}}ADXCDTAD.DAT; echo 1 >> {{c_adx_imnt}}AUTO6D.BAT"
+  when: 
+      - ACE6DPCF.stat.exists
+      - opc == "1"  
+
+- name: Firs time installation for Tcxpay
+  shell: "echo 1 >> {{c_adx_imnt}}AUTO6D.BAT"
+  when: 
+      - not ACE6DPCF.stat.exists
+      - opc == "1"
+
+- name: Not previous information of Tcxpay for migration, changing to installation
+  shell: "echo 1 >> {{c_adx_imnt}}AUTO6D.BAT"
+  when:
+      - not ACE6DPCF.stat.exists
+      - opc == "2"
+  
+- name: Printing opc ACE6D for migration
+  shell: "echo 2 >> {{c_adx_imnt}}AUTO6D.BAT"
+  when:
+    - ACE6DPCF.stat.exists
+    - opc == "2"
+
+- name: Starting the installation ACE6D(TCXPAY)
+  shell: "{{c_adx_imnt}}UINSTALL/START6D.BAT"
+
+- name: Starting asm and reboot controller...a
+  shell: "python2 {{c_adx_imnt}}asm.py {{ASM}} DA"
+  ignore_errors: true
+
+- name: Wait For Reboot If There Was A Change
+  wait_for_connection:
+    sleep: 5
+    delay: 10
+    timeout: 300
+
+- name: Check de log file of ASM
+  command: cat adxcshsf.dat
+  args:
+      chdir: "{{c_adx_sdt1}}"
+
+- name: Cleaning adx_imnt
+  shell: "rm -r {{c_adx_imnt}}*"

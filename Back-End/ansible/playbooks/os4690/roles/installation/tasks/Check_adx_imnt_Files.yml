@@ -1,0 +1,42 @@
+##########################################
+## Create Directory If It Does Not Exist.
+## Required variables:
+## - C:/ 
+##########################################
+
+---
+- name: Check adx_imnt:PAYLOGS.BAT Exist
+  stat:
+    path: "{{c_adx_imnt}}PAYLOGS.BAT"
+  register: imnt_id
+
+- name: Copying adx_imnt:PAYLOGS.BAT if not exist
+  shell: "cp /mnt/cdrom/4690/PAYLOGS.BAT {{c_adx_imnt}} && echo PAYLOGS.BAT copied to adx_imnt"
+  when: not imnt_id.stat.exists
+
+- name: Check adx_imnt:PAYREMO1.PY Exist
+  stat:
+    path: "{{c_adx_imnt}}PAYREMO1.PY"
+  register: imnt_py01
+
+- name: Copying adx_imnt:PAYREMO1.py if not exist
+  shell: "cp /mnt/cdrom/4690/PAYREMO1.PY {{c_adx_imnt}} && echo PAYREMO1.py copied to adx_imnt"
+  when: not imnt_py01.stat.exists
+
+- name: Check adx_imnt:PAYREMO2.PY Exist
+  stat:
+    path: "{{c_adx_imnt}}PAYREMO2.PY"
+  register: imnt_py02
+
+- name: Copying adx_imnt:PAYREMO2.PY if not exist
+  shell: "cp /mnt/cdrom/4690/PAYREMO2.PY {{c_adx_imnt}} && echo PAYREMO2.PY copied to adx_imnt"
+  when: not imnt_py02.stat.exists
+
+- name: Check adx_imnt:tcxpayrx.py Exist
+  stat:
+    path: "{{c_adx_imnt}}tcxpayrx.py"
+  register: imnt_pyx
+
+- name: Copying adx_imnt:tcxpayrx.py if not exist
+  shell: "cp /mnt/cdrom/4690/tcxpayrx.py {{c_adx_imnt}} && echo tcxpayrx.py copied to adx_imnt"
+  when: not imnt_pyx.stat.exists
