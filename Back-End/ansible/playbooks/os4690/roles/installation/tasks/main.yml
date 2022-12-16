@@ -26,16 +26,16 @@
     name: installation
     tasks_from: ACE3D_INSTA.yml
 
+- name: installation ACE4D EPS
+  include_role:
+    name: installation
+    tasks_from: ACE4D_INSTA.yml
+
 - name: Installation Tcxpay
   include_role:
     name: installation
     tasks_from: Tcxpay.yml
   when: Tcxpay == "1"
-
-- name: installation ACE4D EPS
-  include_role:
-    name: installation
-    tasks_from: ACE4D_INSTA.yml
 
 - name: Installation TcxpayPINPAD
   include_role:
