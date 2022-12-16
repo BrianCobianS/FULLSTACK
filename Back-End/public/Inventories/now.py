@@ -43,15 +43,13 @@ contenido.insert(4,"echo $(date +%Y%m%d_%H%M) > /home/ebossteam/temp/"+IP+"/date
 # print("echo $(date +%Y%m%d_%H%M) > /home/ebossteam/temp/"+IP+"/date.txt")
 contenido.insert(5,"ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os4690/Install_Controller.yml -vv  -i /home/ebossteam/temp/"+IP+"/Inventories/import_inventory.yml -e 'level_complement="+COMP+" opc="+OPC+" ASM="+ASM+" level_name="+LEV+" level_complementEPS="+EPSCOMPLE+" Tcxpay="+TCXPAY+" level_complementTcxpay="+TCXPAYCOMPLE+" Common="+COMMONOPC+" level="+COMMON+" PinPad="+PINPADOPC+" levelPIN="+PINPAD+"' 2>&1 | tee /var/log/logscontroladores/"+IP+"-$(date +%Y%m%d_%H%M).txt")
 # print("ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os4690/Install_Controller.yml -vv  -i /home/ebossteam/temp/"+IP+"/Inventories/import_inventory.yml -e 'level_complement="+COMP+" opc="+OPC+" ASM="+ASM+" level_name="+LEV+"' 2>&1 | tee /var/log/logscontroladores/"+IP+"-$(date +%Y%m%d_%H%M).txt")
-contenido.insert(6,"rm -r /home/ebossteam/temp/"+IP)
+
 # print("rm -r /home/ebossteam/temp/"+IP)
-contenido.insert(7,"python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.py "+IP+" "+USR+" "+PASS+" "+OPC+" "+LEV+" "+ASM+" "+FECHA+" "+VERSION+" "+EMAIL)
+contenido.insert(6,"python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.py "+IP+" "+USR+" "+PASS+" "+OPC+" "+LEV+" "+ASM+" "+FECHA+" "+VERSION+" "+EMAIL)
 # print("python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.py "+IP+" "+USR+" "+PASS+" "+OPC+" "+LEV+" "+ASM+" "+FECHA+" "+VERSION+" "+EMAIL)
-contenido.insert(8,"node /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/mail.js")
+contenido.insert(7,"node /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/mail.js")
+contenido.insert(8,"rm -r /home/ebossteam/temp/"+IP)
 # print("node /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/mail.js")
-
-
-
 # f = open('C:/Users/brian.cobian/Desktop/IMDesatendida/Fullstack-Linux/Back-End/public/Inventories/controllers/'+IP+'.sh', "w")
 f = open('/home/ebossteam/UnattendedInstallation/FULLSTACK/Back-End/public/Inventories/controllers/'+IP+'.sh', "w")
 f.writelines("\n".join(contenido))

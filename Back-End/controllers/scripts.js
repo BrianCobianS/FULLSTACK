@@ -23,13 +23,13 @@ const API = (req,res) =>{
         if (Controladores[i].fecha!= 'Now'){
             shel(Controladores[i]);
         }else{
-            // setTimeout(() => {
-            //     ansible(Controladores[i]);
-            // }, 5000);
+            setTimeout(() => {
+                ansible(Controladores[i]);
+            }, 5000);
             now(Controladores[i])
         }
-        // console.log(Controladores[i].email)
-        // Enviarmail(Controladores[i])
+        console.log(Controladores[i].email)
+        Enviarmail(Controladores[i])
 
 
 
