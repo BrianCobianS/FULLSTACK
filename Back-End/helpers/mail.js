@@ -10,12 +10,16 @@ const Enviarmail= async (datos)=>{
 			pass: 'lxcyphalpqqvhuvi', // generated ethereal password
         },
     });
-    const{  ip, usr, pass, email, nivel, version, paquetes, ASM, fecha, opc} = datos
+    const{  ip, usr, pass, email, nivel, version, paquetes, ASM, fecha, opc, TCxpaycommon, TCxpayPinPad} = datos
     let temp='';
 	let time = '';
+	let TcxpayC='';
+	let TcxpayP= '';
 	fecha == 'Now' ? time = 'Now' : time = fecha.slice(6,8)+'/'+fecha.slice(4,6)+'/'+fecha.slice(0,4)+' at: '+fecha.slice(8,10)+':'+fecha.slice(10,12)
     opc==1 ? temp ='Installation': temp ='Migration'
-    console.log(email)
+	TCxpaycommon==0 ? TcxpayC ='N/A': TcxpayC = TCxpaycommon
+	TCxpayPinPad==0 ? TcxpayP = 'N/A': TcxpayP = TCxpayPinPad
+	console.log(email)
     const info = await transporter.sendMail({
         from:  "API - Unattended Intallation",
         to: email,
@@ -342,7 +346,9 @@ const Enviarmail= async (datos)=>{
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Type of installation: <strong style="color: #ffffff;">${temp}</strong> </li>
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Version: <strong style="color: #ffffff;">${version}</strong> </li>
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Level: <strong style="color: #ffffff;">${nivel}</strong> </li>
-																			<li style= "margin-block-start: 0em; margin-block-end: 0em">packages: <strong style="color: #ffffff;">${paquetes}</strong></li>
+																			<li style= "margin-block-start: 0em; margin-block-end: 0em">packages: <strong style="color: #ffffff;">${paquetes.substring(0, (paquetes.length - 2))}</strong></li>
+																			<li style= "margin-block-start: 0em; margin-block-end: 0em">TcxpayPinPad: <strong style="color: #ffffff;">${TcxpayP}</strong></li>
+																			<li style= "margin-block-start: 0em; margin-block-end: 0em">TcxpayCommon: <strong style="color: #ffffff;">${TcxpayC}</strong></li>
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">ASM: <strong style="color: #ffffff;">${ASM}</strong></li>
 																			<li style= "margin-block-start: 0em; margin-block-end: 0em">Installation date: <strong style="color: #ffffff;">${time} </strong></li>
 																			</ol> 

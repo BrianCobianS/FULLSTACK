@@ -1,13 +1,8 @@
 
-
-- name: Check adx_imnt scripts Exist
-  stat:
-    path: "{{c_adx_imnt}}PAYINST.BAT"
-  register: imnt_pay
-
-- name: Deleting adx_imnt:PAYINST.BAT
-  shell: "rm -f {{c_adx_imnt}}PAYINST.BAT"
-  when: imnt_pay.stat.exists
+- name: Preparing the adx_imnt/ directory.
+  include_role:
+    name: installation
+    tasks_from: Prepare_adx_imnt_Directory.yml
 
 - name: Cheks if there is an tcxpay-common old Version dat
   stat:
@@ -17,6 +12,15 @@
 - name: Deleting the tcxpay-common old Version dat and Installation
   shell: "rm {{c_adx_ipgm}}ADXCETCD.DAT"
   when: lp.stat.exists
+
+- name: Check adx_imnt scripts Exist
+  stat:
+    path: "{{c_adx_imnt}}PAYINST.BAT"
+  register: imnt_pay
+
+- name: Deleting adx_imnt:PAYINST.BAT
+  shell: "rm -f {{c_adx_imnt}}PAYINST.BAT"
+  when: imnt_pay.stat.exists
 
 - name: Copying files from Landing zone to adx_imnt
   shell: "cp {{landing_zone}}asm.py {{c_adx_imnt}}"
