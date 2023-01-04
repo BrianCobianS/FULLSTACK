@@ -8,8 +8,10 @@ ASM=(sys.argv[6])
 FECHA=(sys.argv[7])
 VERSION=(sys.argv[8])
 EMAIL=(sys.argv[9])
+COMMON=(sys.argv[10])
+PINPAD=(sys.argv[11])
 #pruebas  python email.py 12.12.12 master m1 1 12.ver12 accept 12712/12 Morty brian.cobian@toshibagcs.com
-print(IP,USR,PASS,OPC,LEV,ASM,FECHA,VERSION,EMAIL)
+print(IP,USR,PASS,OPC,LEV,ASM,FECHA,VERSION,EMAIL,COMMON,PINPAD)
 def createmail(message,path,boleano,msgs):
     # contenido = open("C:/Users/brian.cobian/Desktop/IMDesatendida/Correohtml/mail-node/email.txt").read().splitlines()
     contenido = open("/home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.txt").read().splitlines()
@@ -31,6 +33,8 @@ def createmail(message,path,boleano,msgs):
     contenido.insert(2,"    Tcxpay: '"+msgs[2]+"',")
     contenido.insert(2,"    TcxpayPin: '"+msgs[3]+"',")
     contenido.insert(2,"    TcxpayCom: '"+msgs[4]+"',")
+    contenido.insert(2,"    TcxpayComVer: '"+COMMON+"',")
+    contenido.insert(2,"    TcxpayPinVer: '"+PINPAD+"',")
     f = open('/home/ebossteam/UnattendedInstallation/FULLSTACK/mails/mail.js', "w")
     # f = open('C:/Users/brian.cobian/Desktop/IMDesatendida/Correohtml/mail-node/mail.js', "w")
 
