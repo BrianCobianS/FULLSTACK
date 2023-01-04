@@ -45,7 +45,7 @@ contenido.insert(5,"ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os469
 # print("ansible-playbook /home/ebossteam/temp/"+IP+"/playbooks/os4690/Install_Controller.yml -vv  -i /home/ebossteam/temp/"+IP+"/Inventories/import_inventory.yml -e 'level_complement="+COMP+" opc="+OPC+" ASM="+ASM+" level_name="+LEV+"' 2>&1 | tee /var/log/logscontroladores/"+IP+"-$(date +%Y%m%d_%H%M).txt")
 
 # print("rm -r /home/ebossteam/temp/"+IP)
-contenido.insert(6,"python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.py "+IP+" "+USR+" "+PASS+" "+OPC+" "+LEV+" "+ASM+" "+FECHA+" "+VERSION+" "+EMAIL" "+COMMON+" "+PINPAD)
+contenido.insert(6,"python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.py "+IP+" "+USR+" "+PASS+" "+OPC+" "+LEV+" "+ASM+" "+FECHA+" "+VERSION+" "+EMAIL+" "+COMMON+" "+PINPAD)
 # print("python3 /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/email.py "+IP+" "+USR+" "+PASS+" "+OPC+" "+LEV+" "+ASM+" "+FECHA+" "+VERSION+" "+EMAIL)
 contenido.insert(7,"node /home/ebossteam/UnattendedInstallation/FULLSTACK/mails/mail.js")
 contenido.insert(8,"rm -r /home/ebossteam/temp/"+IP)
