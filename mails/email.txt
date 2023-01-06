@@ -23,8 +23,8 @@ const Enviarmail= async (datos)=>{
     console.log(email)
 	let TcxpayC='';
 	let TcxpayP= '';
-	TcxpayComVer==0 ? TcxpayC ='N/A': TcxpayC = TCxpaycommon
-	TcxpayPinVer==0 ? TcxpayP = 'N/A': TcxpayP = TCxpayPinPad
+	TcxpayComVer==0 ? TcxpayC ='N/A': TcxpayC = TcxpayComVer
+	TcxpayPinVer==0 ? TcxpayP = 'N/A': TcxpayP = TcxpayPinVer
     const info = await transporter.sendMail({
         from:  "API - Unattended Intallation",
         to: email,
@@ -387,7 +387,7 @@ const Enviarmail= async (datos)=>{
 														<tr>
 															<td class="pad" style="padding-top:10px;padding-right:10px;padding-bottom:45px;padding-left:10px;">
 																<div style="color:#d5d5d5;font-size:18px;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-weight:400;line-height:150%;text-align:center;direction:ltr;letter-spacing:0px;mso-line-height-alt:27px;">
-																	<p style="margin: 0;"><strong style="color: #ffffff;"></strong>${message} </p>																	
+																	<p style="margin: 0;"><strong style="color: #ffffff;"></strong>  ${message}</p>
 																	<p style="margin: 0;"><strong style="color: #ffffff;"> SurePos ACE:</strong>  ${datos.ACE}</p>
 																	<p style="margin: 0;"><strong style="color: #ffffff;">Eps:</strong>  ${datos.EPS}</p>
 																	<p style="margin: 0;"><strong style="color: #ffffff;">Tcxpay:</strong>  ${datos.Tcxpay}</p>
