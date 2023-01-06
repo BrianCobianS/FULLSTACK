@@ -138,11 +138,9 @@ def changeBat(fileDirectory):
                         if Error1 != '':
                             msgs[4]='Failed: ' +Error1
             if 'SUCCES' in linea:
-                 Exito=1
-            if 'Print RML' in linea or ban==1:
-                # Succes=Succes+linea
-                ban=1
-            i += 1
+                Exito=1
+            if 'UNREACHABLE' in linea:
+                Error1 = 'The controller is unreachable, please make sure to connect the controller whitin Toshiba network'
     print('Esta es la lista: ', resultados)
     print(msgs)
     if Exito ==1:
