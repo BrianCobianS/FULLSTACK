@@ -34,9 +34,7 @@ const RML = (req,res) =>{
             // console.log(stdout.indexOf('UNREACHABLE!'))
             if (stdout.indexOf('UNREACHABLE!') == -1){
 
-                const versiones = {
-
-                }
+                const versiones = []
                 const current = {
                     Product: stdout.substring(stdout.indexOf("CProduct")+11,stdout.indexOf("8C")),
                     PID: stdout.substring(stdout.indexOf("CPID")+7,stdout.indexOf("1C")),
