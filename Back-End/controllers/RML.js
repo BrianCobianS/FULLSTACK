@@ -5,7 +5,7 @@ const RML = (req,res) =>{
     const {checkcontroller} = req.body
     console.log(checkcontroller)
     console.log(checkcontroller.ip)
-    exec(`python3 /home/ebossteam/RML/ojjo/Inventories/Inventory.py ${checkcontroller.ip} ${checkcontroller.usr} ${checkcontroller.pass} AI`, (error, stdout, stderr) => {
+    exec(`python3 /home/ebossteam/RML/ojjo/Inventories/Inventory.py ${checkcontroller.ip} ${checkcontroller.usr} ${checkcontroller.pass} ${checkcontroller.type}`, (error, stdout, stderr) => {
         if (error) {
         console.error(`error: ${error.message}`);
         return;
