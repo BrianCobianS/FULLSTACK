@@ -47,13 +47,13 @@ const RML = (req,res) =>{
                 }
                 versiones.push(current)
                 const maintenance = {
-                    PID: "-" ,
-                    SP_Build: "-" ,
-                    Base_level: "-" ,
-                    DateApplied: "-" ,
-                    PTF: "-" ,
-                    Release: "-" ,
-                    Emergencyfix: "-" 
+                    PID: "None" ,
+                    SP_Build: "None" ,
+                    Base_level: "None" ,
+                    DateApplied: "None" ,
+                    PTF: "None" ,
+                    Release: "None" ,
+                    Emergencyfix: "None" 
                 }
         
                 if(stdout.indexOf('No hay mantenimineto') == -1){
