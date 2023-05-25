@@ -5,7 +5,7 @@
 
 - name: Download Toshiba Nexus Package ACE EPS From Nexus
   get_url:
-    url: "{{nexus_url2}}/repository/tgcs-maven-snapshot/com/toshibacommerce/ace/ACE4D001/{{level_name}}-SNAPSHOT/ACE4D001-{{level_complementEPS}}.zip"
+    url: "{{nexus_url2}}/repository/tgcs-maven-group/com/toshibacommerce/ace/ACE4D001/{{level_name}}-SNAPSHOT/ACE4D001-{{level_complementEPS}}.zip"
     dest: "{{landing_zone}}"
     timeout: 300
     

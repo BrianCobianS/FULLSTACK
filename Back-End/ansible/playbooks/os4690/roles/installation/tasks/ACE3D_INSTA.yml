@@ -10,7 +10,7 @@
 
 - name: Download Toshiba Nexus Package ACE From Nexus
   get_url:
-    url: "{{nexus_url2}}/repository/tgcs-maven-snapshot/com/toshibacommerce/ace/ACE3D001/{{level_name}}-SNAPSHOT/ACE3D001-{{level_complement}}.zip"
+    url: "{{nexus_url2}}/repository/tgcs-maven-group/com/toshibacommerce/ace/ACE3D001/{{level_name}}-SNAPSHOT/ACE3D001-{{level_complement}}.zip"
     dest: "{{landing_zone}}"
     timeout: 300
 
