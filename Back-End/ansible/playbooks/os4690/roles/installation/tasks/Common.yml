@@ -25,9 +25,9 @@
 - name: Copying files from Landing zone to adx_imnt
   shell: "cp {{landing_zone}}asm.py {{c_adx_imnt}}"
 
-- name: Download Toshiba Nexus Package TCxPay Common From Nexus
+- name: Download Toshiba Nexus Package TCxPay CommonFrom Nexus
   get_url:
-    url: "{{nexus_url2}}/repository/tgcs-maven-release/com/tgcs/tcxpay/tcxpay-common-install/{{level}}/tcxpay-common-install-{{level}}.iso"
+    url: "{{nexus_url2}}PacksTcxpay/tcxpay-common-install-{{level}}.iso"
     dest: "{{landing_zone}}"
     timeout: 300
 
