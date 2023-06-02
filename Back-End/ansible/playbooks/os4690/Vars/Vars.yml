@@ -60,7 +60,7 @@ python_reboot_controller: python -c "import os4690.adxserve as a; a.rebootContro
 
 ## NEXUS ##
 nexus_url: http://10.89.100.126:8081
-nexus_url2: https://nexus.commerce.toshiba.com
+nexus_url2: http://10.89.182.86/
 nexus_username: 4690jenkins
 nexus_password: P_elevate#99
 nexus_userpass: "{{nexus_username}}:{{nexus_password}}"

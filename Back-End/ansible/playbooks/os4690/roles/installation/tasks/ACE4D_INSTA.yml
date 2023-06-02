@@ -3,9 +3,9 @@
     path: "{{c_adx_imnt}}UINSTALL/"
     state: directory
 
-- name: Download Toshiba Nexus Package ACE EPS From Nexus
+- name: Download Toshiba Nexus Package ACE From VM ACE 4D
   get_url:
-    url: "{{nexus_url2}}/repository/tgcs-maven-group/com/toshibacommerce/ace/ACE4D001/{{level_name}}-SNAPSHOT/ACE4D001-{{level_complementEPS}}.zip"
+    url: "{{nexus_url2}}Packs/ACE4D001-{{level_complementEPS}}.zip"
     dest: "{{landing_zone}}"
     timeout: 300
     

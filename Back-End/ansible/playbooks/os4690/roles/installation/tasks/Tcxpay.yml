@@ -3,12 +3,12 @@
     path: "{{c_adx_imnt}}UINSTALL/"
     state: directory
 
-- name: Download Toshiba Nexus Package Tcxpay From Nexus
+- name: Download Toshiba Nexus Package ACE From VM ACE6D
   get_url:
-    url: "{{nexus_url2}}/repository/tgcs-maven-group/com/toshibacommerce/ace/ACE6D001/{{level_name}}-SNAPSHOT/ACE6D001-{{level_complementTcxpay}}.zip"
+    url: "{{nexus_url2}}Packs/ACE6D001-{{level_complementTcxpay}}.zip"
     dest: "{{landing_zone}}"
     timeout: 300
-    
+
 - name: Create Directory ACE46D If Does Not Exist
   file:
     path: "{{c_drive}}ACE6D/"
