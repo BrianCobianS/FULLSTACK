@@ -27,7 +27,7 @@
 
 - name: Download Toshiba Nexus Package TCxPay PIN Pad From Nexus
   get_url:
-    url: "{{nexus_url2}}PacksTcxpay/tcxpay-pinpad-spt-asm-{{level}}.iso"
+    url: "{{nexus_url2}}PacksTcxpay/tcxpay-pinpad-spt-asm-{{levelPIN}}.iso"
     dest: "{{landing_zone}}"
     timeout: 300
 
